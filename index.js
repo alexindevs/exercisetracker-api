@@ -123,22 +123,17 @@ app.get('/api/users/:_id/logs', async (req, res) => {
           duration: exercise.duration,
           date: exercise.date.toDateString()
       }));
-      console.log(log)
+      console.log(user.username, log.length, req.params._id, log)
       res.json({
           username: user.username,
           count: log.length,
           _id: req.params._id,
           log: log
       });
-
   } catch (error) {
       res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
-
-
-
 
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log('Your app is listening on port ' + listener.address().port);
